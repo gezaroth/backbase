@@ -219,4 +219,4 @@ MyCurrency is a RESTful API built with Python and Django designed to provide cur
 ## Conclusion
 The MyCurrency API provides a robust and flexible solution for retrieving and calculating currency exchange rates. With support for multiple providers and detailed functionalities, it serves as a comprehensive platform for currency-related tasks.
 
-For further inquiries or issues, please contact the development team at [your-email@example.com].
+For further inquiries or issues, please contact the development team at gezaroth96@gmail.com.
