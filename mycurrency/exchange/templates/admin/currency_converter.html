@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Currency Converter</h1>
+    <form id="converter-form">
+        <label for="source_currency">Source Currency:</label>
+        <select id="source_currency" name="source_currency">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="CHF">CHF</option>
+        </select>
+        
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" required>
+        
+        <label for="exchanged_currency">Target Currency:</label>
+        <select id="exchanged_currency" name="exchanged_currency">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="CHF">CHF</option>
+        </select>
+        
+        <button type="submit">Convert</button>
+    </form>
+
+    <h2>Result:</h2>
+    <div id="result"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#converter-form').on('submit', function(e) {
+                e.preventDefault();
+                const sourceCurrency = $('#source_currency').val();
+                const amount = $('#amount').val();
+                const exchangedCurrency = $('#exchanged_currency').val();
+
+                $.ajax({
+                    url: '/api/convert/',  // Make sure this URL matches your API endpoint
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        source_currency: sourceCurrency,
+                        amount: amount,
+                        exchanged_currency: exchangedCurrency
+                    }),
+                    success: function(data) {
+                        $('#result').html(`${amount} ${sourceCurrency} = ${data.converted_amount} ${data.exchanged_currency} (Rate: ${data.rate_value})`);
+                    },
+                    error: function(error) {
+                        $('#result').html('Error converting currency. Please try again.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

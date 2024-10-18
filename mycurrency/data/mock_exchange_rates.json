@@ -1,0 +1,56 @@
+[
+    {
+        "valuation_date": "2024-10-01",
+        "source_currency": "USD",
+        "exchanged_currency": "EUR",
+        "rate_value": 0.85
+    },
+    {
+        "valuation_date": "2024-10-01",
+        "source_currency": "USD",
+        "exchanged_currency": "GBP",
+        "rate_value": 0.75
+    },
+    {
+        "valuation_date": "2024-10-01",
+        "source_currency": "USD",
+        "exchanged_currency": "JPY",
+        "rate_value": 110.50
+    },
+    {
+        "valuation_date": "2024-10-02",
+        "source_currency": "USD",
+        "exchanged_currency": "EUR",
+        "rate_value": 0.84
+    },
+    {
+        "valuation_date": "2024-10-02",
+        "source_currency": "USD",
+        "exchanged_currency": "GBP",
+        "rate_value": 0.76
+    },
+    {
+        "valuation_date": "2024-10-02",
+        "source_currency": "USD",
+        "exchanged_currency": "JPY",
+        "rate_value": 111.00
+    },
+    {
+        "valuation_date": "2024-10-03",
+        "source_currency": "USD",
+        "exchanged_currency": "EUR",
+        "rate_value": 0.86
+    },
+    {
+        "valuation_date": "2024-10-03",
+        "source_currency": "USD",
+        "exchanged_currency": "GBP",
+        "rate_value": 0.74
+    },
+    {
+        "valuation_date": "2024-10-03",
+        "source_currency": "USD",
+        "exchanged_currency": "JPY",
+        "rate_value": 109.00
+    }
+]

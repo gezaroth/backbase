@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exchange Rate Graph</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Exchange Rate Comparison</h1>
+    <form id="exchange-rate-form" method="POST">
+        {% csrf_token %}
+        <label for="currency1">Select Currency 1:</label>
+        <select id="currency1" name="currency1">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <!-- Add more currencies as needed -->
+        </select>
+
+        <label for="currency2">Select Currency 2:</label>
+        <select id="currency2" name="currency2">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <!-- Add more currencies as needed -->
+        </select>
+
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" required>
+
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" required>
+
+        <button type="submit">Get Exchange Rates</button>
+    </form>
+
+    <canvas id="exchangeRateChart" width="400" height="200"></canvas>
+
+    <script>
+        const ctx = document.getElementById('exchangeRateChart').getContext('2d');
+        let chart;
+
+        function renderChart(labels, data1, data2) {
+            const chartData = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: '{{ currency1 }} to {{ currency2 }}',
+                        data: data1,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1,
+                        fill: false
+                    },
+                    {
+                        label: '{{ currency2 }} to {{ currency1 }}',
+                        data: data2,
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1,
+                        fill: false
+                    }
+                ]
+            };
+
+            if (chart) {
+                chart.destroy();
+            }
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        {% if labels %}
+            renderChart({{ labels|safe }}, {{ rates1|safe }}, {{ rates2|safe }});
+        {% endif %}
+    </script>
+</body>
+</html>

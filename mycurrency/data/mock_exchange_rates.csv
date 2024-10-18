@@ -1,0 +1,4 @@
+source_currency,exchanged_currency,valuation_date,rate_value
+USD,EUR,2024-10-01,0.85
+EUR,USD,2024-10-01,1.18
+JPY,USD,2024-10-01,0.009
