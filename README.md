@@ -11,6 +11,7 @@ MyCurrency is a RESTful API built with Python and Django designed to provide cur
   - Retrieve exchange rates between two currencies for a specified period.
   - Calculate the latest exchange rate between two currencies.
   - Retrieve Time-Weighted Rate (TWR) for investment analysis.
+    
 ### Providers
 1. **Fixer.io**: 
    - An external API provider that supplies current and historical currency rates. 
@@ -18,7 +19,9 @@ MyCurrency is a RESTful API built with Python and Django designed to provide cur
 
 2. **Local Provider**: 
    - Utilizes a CSV file containing currency exchange ratios for various accepted currencies and dates.
-
+   - Save CSV local data
+     python manage.py import_exchange_rates "/CSV/PATH/data/mock_exchange_rates.csv"
+     
 3. **Mock Provider**: 
    - Generates random exchange rates for testing purposes when data is not available in the Local Provider or from Fixer.io.
 
